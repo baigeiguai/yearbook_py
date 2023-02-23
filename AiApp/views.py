@@ -22,4 +22,6 @@ def entity_extract_index(request):
             for key,value in dic.items():
                 if value in resp:
                     resp[value].append(key[0])
+    for k in resp.keys():
+        resp[k] = list(set(resp[k]))
     return JsonResponse(resp,json_dumps_params={'ensure_ascii': False})
